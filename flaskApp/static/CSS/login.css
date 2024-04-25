@@ -1,0 +1,36 @@
+body{
+    background-image: url("../IMG/sebastian-svenson-d2w-_1LJioQ-unsplash\(1\).jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-container-left{
+    background-color: var(--app-bg-color);
+}
+
+.login-container-right{
+    /* background-image: url("../IMG/undraw_Success_factors_re_ce93.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; */
+    background-color: var(--app-bg-color);
+}
+
+button{
+    background-color: var(--app-comp-color) !important;
+    font-size: small !important;
+}
+
+a{
+    text-decoration: none !important;
+    font-size: small !important;
+}
+
+a:hover{
+    text-decoration: underline !important;
+}
+
+input{
+    border-color: var(--bs-focus-ring-color) !important;
+}
