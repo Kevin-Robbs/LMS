@@ -8,7 +8,7 @@ uri = f"mongodb+srv://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@weg-cluster-
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFILE=certifi.where())
-db = client['wedgify']
+db = client['lms']
 
 # Send a ping to confirm a successful connection
 try:
