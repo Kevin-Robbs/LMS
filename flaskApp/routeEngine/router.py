@@ -1,8 +1,6 @@
 from flaskApp import app
 from flaskApp.models.user import User
-from bson import ObjectId
 from flask import render_template, redirect, url_for, flash, session, request
-from flaskApp import bcrypt
 
 @app.route('/')
 def main():
@@ -11,6 +9,19 @@ def main():
 @app.post('/login')
 def login_user():
     data = request.form.to_dict()
-    user = User.findUserByEmail(data['email'])
-    pwdHash = bcrypt.check_password_hash(password=data['password'], pw_hash=user.password)
-    return redirect('/')
+    
+    try:
+        user = User.query.filter_by(email=data['email']).first()
+        if not user:
+            flash('Invalid email', 'email')
+            return redirect('/')
+        pwdHash = User.validatePassword(user.password, data['password'])
+        if not pwdHash:
+            flash('Invalid password', 'password')
+            return redirect('/')
+        session['user'] = user.id
+        return redirect('/dashboard')
+    except Exception as e:
+        print(e)
+        flash('An error occurred', 'error')
+        return redirect('/')
